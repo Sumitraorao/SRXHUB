@@ -35,8 +35,7 @@ function Products() {
 
 export default function App() {
   return (
-    <BrowserRouter basename="/SRXHUB/">
-      <Navbar />
+      <BrowserRouter basename="/">      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
