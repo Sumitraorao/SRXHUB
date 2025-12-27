@@ -1,77 +1,47 @@
-
 import React from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Home from './pages/Home';
-import Products from './pages/Products';
-import Enterprise from './pages/Enterprise';
-import Contact from './pages/Contact';
-import Customers from './pages/Customers';
-import Community from './pages/Community';
-import Partners from './pages/Partners';
-import Security from './pages/Security';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import CompleteProfile from './pages/CompleteProfile';
-import SrxAi from './pages/SrxAi';
-import AiChat from './pages/AiChat';
-import Dashboard from './pages/Dashboard';
-import ProductDetail from './pages/ProductDetail';
-import Policies from './pages/Policies';
-import MobileApps from './pages/MobileApps';
-import DeveloperCenter from './pages/DeveloperCenter';
-import About from './pages/About';
 
-// Scroll to top on route change
-const ScrollToTop = () => {
-    const { pathname } = useLocation();
-  
-    React.useEffect(() => {
-      window.scrollTo(0, 0);
-    }, [pathname]);
-  
-    return null;
-};
-
-function App() {
-  const location = useLocation();
-  
-  // Hide Navbar/Footer on Auth pages or Chat Interface or Dashboard for immersive experience
-  const isAuthPage = location.pathname === '/login' || location.pathname === '/register' || location.pathname === '/complete-profile';
-  const isChatPage = location.pathname === '/ai/chat';
-  const isDashboard = location.pathname.startsWith('/dashboard');
-
+// Simple Home Page
+function Home() {
   return (
-    <div className="min-h-screen bg-white font-sans text-gray-900 flex flex-col">
-      <ScrollToTop />
-      {(!isAuthPage && !isChatPage && !isDashboard) && <Navbar />}
-      <main className="flex-grow">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/product/:id" element={<ProductDetail />} />
-          <Route path="/enterprise" element={<Enterprise />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/customers" element={<Customers />} />
-          <Route path="/community" element={<Community />} />
-          <Route path="/partners" element={<Partners />} />
-          <Route path="/security" element={<Security />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/complete-profile" element={<CompleteProfile />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/ai" element={<SrxAi />} />
-          <Route path="/ai/chat" element={<AiChat />} />
-          <Route path="/policies" element={<Policies />} />
-          <Route path="/mobile-apps" element={<MobileApps />} />
-          <Route path="/developer-center" element={<DeveloperCenter />} />
-        </Routes>
-      </main>
-      {(!isAuthPage && !isChatPage && !isDashboard) && <Footer />}
+    <div className="p-8">
+      <h1 className="text-4xl font-bold mb-4">Welcome to SRXHUB</h1>
+      <p className="text-lg">Cloud Software Suite for Businesses</p>
     </div>
   );
 }
 
-export default App;
+// Simple Contact Page
+function Contact() {
+  return (
+    <div className="p-8">
+      <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
+      <p>Email: digitalmax.mgx@gmail.com</p>
+      <p>Phone: 8959795778</p>
+    </div>
+  );
+}
+
+// Simple Products Page
+function Products() {
+  return (
+    <div className="p-8">
+      <h1 className="text-4xl font-bold mb-4">Our Products</h1>
+      <p>Coming soon...</p>
+    </div>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter basename="/SRXHUB/">
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/products" element={<Products />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
